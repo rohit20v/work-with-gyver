@@ -1,0 +1,23 @@
+{
+  "name": "work-with-gyver",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development node --watch --import remix/node-tsx server.ts",
+    "hmr": "cross-env NODE_ENV=development node hmr.ts",
+    "start": "cross-env NODE_ENV=production node --import remix/node-tsx server.ts",
+    "test": "cross-env NODE_ENV=test remix test",
+    "typecheck": "tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=24.3.0"
+  },
+  "dependencies": {
+    "remix": "^3.0.0-rc.4"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "cross-env": "^10.1.0",
+    "typescript": "latest"
+  }
+}
