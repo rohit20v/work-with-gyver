@@ -1,0 +1,45 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:gyver?mode=memory&cache=shared"
+}
+
+model JobOffer {
+  /// Internal source data. Keep notes private and exclude them from public API responses and generation payloads. Free-text descriptions can also contain sensitive data; review before generation.
+  id             String          @id @default(cuid())
+  title          String
+  company        String
+  description    String
+  location       String
+  requiredSkills Json
+  experience     String
+  internalNotes  String          @default("")
+  advertisements Advertisement[]
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+}
+
+model Advertisement {
+  /// One generated/manual variant for a JobOffer + channel + format + location. Multiple rows may reference the same offer.
+  id               String          @id @default(cuid())
+  jobOfferId       String
+  jobOffer         JobOffer        @relation(fields: [jobOfferId], references: [id], onDelete: Cascade)
+  channel          String
+  format           String
+  status           String          @default("DRAFT")
+  location         String
+  /// Immutable original LLM output; active fields below can be manually edited.
+  generatedContent Json
+  content          String
+  title            String
+  callToAction     String
+  imageUrl         String?
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+
+  @@index([jobOfferId])
+  @@index([channel])
+}
