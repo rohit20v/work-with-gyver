@@ -32,7 +32,7 @@ Copy-Item .env.example .env
 
 ```dotenv
 OLLAMA_BASE_URL="http://localhost:11434"
-OLLAMA_MODEL="qwen3.5:latest"
+OLLAMA_MODEL="gemma3"
 ```
 
 `OLLAMA_BASE_URL` è l'indirizzo dell'API locale di Ollama; `OLLAMA_MODEL` deve corrispondere a un modello mostrato da `ollama list`. Riavviare il server dopo aver modificato `.env`.
@@ -55,7 +55,7 @@ Aprire **http://localhost:44100/**. Al primo accesso l'app crea lo schema SQLite
 5. Ripetere con la stessa offerta ma un canale, formato o luogo diverso per creare un'altra variante indipendente.
 6. Usare i filtri per offerta/canale per ritrovare le varianti.
 
-Per `IMAGE` e `IMAGE_TEXT`, Ollama crea anche un **prompt testuale per un generatore d'immagini** (`generatedContent.imagePrompt`); non crea né salva un file immagine. I modelli Qwen multimodali installati comprendono immagini, ma non sono generatori text-to-image. La funzione sperimentale di generazione immagini di Ollama non è documentata come disponibile su Windows. L'uso di un generatore d'immagini è quindi opzionale e fuori dal flusso implementato.
+Per `IMAGE` e `IMAGE_TEXT`, Ollama crea anche un **prompt testuale per un generatore d'immagini** (`generatedContent.imagePrompt`); non crea né salva un file immagine. L'uso di un generatore d'immagini è quindi opzionale e fuori dal flusso implementato. Il che puo essere implementata tramite una pipeline/workflow che intercetta con comfyUI oppure diversi provider come OpenAI.
 
 ## API
 
