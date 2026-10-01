@@ -10,10 +10,10 @@ Applicazione minimale per creare, visualizzare e modificare annunci destinati a 
 
 - Node.js **24.3 o superiore** e npm.
 - Ollama installato ([ollama.com/download](https://ollama.com/download)) e avviato.
-- Modello Qwen 3.5 già disponibile localmente. Per scaricarlo una volta sola:
+- Modello gemma3 già disponibile localmente. Per scaricarlo una volta sola:
 
 ```powershell
-ollama pull qwen3.5:latest
+ollama pull gemma3:latest
 ollama list
 ```
 
